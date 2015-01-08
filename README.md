@@ -5,11 +5,11 @@ The UltraCart XML Parser is a Ruby interface for interacting with XML files from
 Objects returned by the parser include:
 - Addresses
 - Coupons
-- Customer Profiles
-- Transation Details
+- Customer Profile
+- Transaction Details
 - Items
 
-Other data returned from the parser include:
+Other fields returned from the parser include:
 - Order ID
 - Channel Partner Code
 - Channel Partner Order ID
@@ -20,8 +20,8 @@ Other data returned from the parser include:
 ### Reference Documentation
 
 More information regarding UltraCart's XML Postback feature:
-[UltraCart XML Postback Documentation](http://docs.ultracart.com/display/ucdoc/XML+Postback)
-[UltraCart XML Schema](https://secure.ultracart.com/xml/ultracart.xsd)
+- [UltraCart XML Postback Documentation](http://docs.ultracart.com/display/ucdoc/XML+Postback)
+- [UltraCart XML Schema](https://secure.ultracart.com/xml/ultracart.xsd)
 
 ## Installation
 
