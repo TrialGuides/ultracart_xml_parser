@@ -14,7 +14,7 @@ module UltraCartXMLParser
     end
 
     def extended_details
-      @element.xpath('//extended_details//extended_detail').map { |extended_detail| ExtendedDetail.new(extended_detail) }
+      @element.xpath('extended_details/extended_detail').map { |extended_detail| ExtendedDetail.new(extended_detail) }
     end
   end
 end

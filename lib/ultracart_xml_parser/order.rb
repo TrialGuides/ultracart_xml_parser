@@ -27,7 +27,6 @@ module UltraCartXMLParser
     end
 
     def transaction_details
-      puts "********** #{@element.xpath('//export/order/transaction_details/transaction_detail').count}"
       @element.xpath('//export/order/transaction_details/transaction_detail').map { |transaction_detail| TransactionDetail.new(transaction_detail) }
     end
   end
