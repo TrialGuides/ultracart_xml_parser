@@ -20,7 +20,7 @@ describe UltraCartXMLParser::Coupon do
   end
 
   context 'coupon has an accounting code' do
-    subject(:coupon) { UltraCartXMLParser::Order.parse(xml_fixture('coupons')).coupons.first }
+    subject(:coupon) { UltraCartXMLParser.parse(xml_fixture('coupons')).coupons.first }
 
     include_examples 'it has the required coupon fields'
 
@@ -30,7 +30,7 @@ describe UltraCartXMLParser::Coupon do
   end
 
   context 'coupon does not have an accounting code' do
-    subject(:coupon) { UltraCartXMLParser::Order.parse(xml_fixture('coupon_no_acct')).coupons.first }
+    subject(:coupon) { UltraCartXMLParser.parse(xml_fixture('coupon_no_acct')).coupons.first }
 
     include_examples 'it has the required coupon fields'
 

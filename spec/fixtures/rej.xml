@@ -7,7 +7,7 @@
     <order_date>01 JAN 2015 12:00:00</order_date>
     <order_type>credit card</order_type>
     <current_stage>REJ</current_stage>
-    <payment_status>Processed</payment_status>
+    <payment_status>Refunded</payment_status>
     <payment_date>01/01/2015</payment_date>
     <payment_date_time>01 JAN 2015 14:00:00</payment_date_time>
     <bill_to_company>Test Inc.</bill_to_company>

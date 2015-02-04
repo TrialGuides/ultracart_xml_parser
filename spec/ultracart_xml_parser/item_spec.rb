@@ -28,7 +28,7 @@ describe UltraCartXMLParser::Item do
   end
 
   context 'individual item' do
-    subject(:item) { UltraCartXMLParser::Order.parse(xml_fixture('items')).items.first }
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).items.first }
 
     include_examples 'it has the required item fields'
 
@@ -86,7 +86,7 @@ describe UltraCartXMLParser::Item do
   end
 
   context 'item is a kit' do
-    subject(:item) { UltraCartXMLParser::Order.parse(xml_fixture('items')).items[1] }
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).items[1] }
 
     include_examples 'it has the required item fields'
 
@@ -148,7 +148,7 @@ describe UltraCartXMLParser::Item do
   end
 
   context 'item is part of a kit' do
-    subject(:item) { UltraCartXMLParser::Order.parse(xml_fixture('items')).items.last }
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).items.last }
 
     include_examples 'it has the required item fields'
 
@@ -210,7 +210,7 @@ describe UltraCartXMLParser::Item do
   end
 
   describe 'item can have a cost of goods sold' do
-    subject(:item) { UltraCartXMLParser::Order.parse(xml_fixture('items')).items.first }
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).items.first }
 
     it 'has a cogs' do
       expect(item.cogs).to eq(0.50)
@@ -222,7 +222,7 @@ describe UltraCartXMLParser::Item do
   end
 
   describe 'item can have a blank cost of goods sold' do
-    subject(:item) { UltraCartXMLParser::Order.parse(xml_fixture('items')).items[1] }
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).items[1] }
 
     it 'has a blank cogs' do
       expect(item.cogs).to be_nil
