@@ -47,11 +47,9 @@ order = UltraCartXML::Order.parse(xml_contents)
 
 # Get the Order ID
 order.order_id
-TODO: Document result
 
 # Get the shipping address
 order.shipping_address
-TODO: Document result
 
 # etc.
 ```
