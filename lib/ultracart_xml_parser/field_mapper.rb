@@ -2,51 +2,40 @@ require 'date'
 
 module UltraCartXMLParser
   module FieldMapper
-    def coerce_boolean(e)
-      return nil unless e
+    def coerce(element)
+      return nil if element.nil? || (text = element.text) == ''
 
-      text = e.text.downcase
-      text == "" ? nil : text[0] == 'y' || text[0] == 't'
+      yield(text)
     end
 
-    def coerce_fixnum(e)
-      return nil unless e
-
-      text = e.text
-      text == "" ? nil : text.to_i
+    def coerce_boolean(element)
+      coerce(element) { |text| text[0].downcase == 'y' || text[0].downcase == 't' }
     end
 
-    def coerce_float(e)
-      return nil unless e
-
-      text = e.text
-      text == "" ? nil : text.to_f
+    def coerce_fixnum(element)
+      coerce(element) { |text| text.to_i }
     end
 
-    def coerce_string(e)
-      return nil unless e
-
-      text = e.text
-      text == "" ? nil : text
+    def coerce_float(element)
+      coerce(element) { |text| text.to_f }
     end
 
-    def coerce_date(e)
-      return nil unless e
-
-      text = e.text
-      text == "" ? nil : Date.strptime(text, '%m/%d/%Y')
+    def coerce_string(element)
+      coerce(element) { |text| text }
     end
 
-    def coerce_datetime(e)
-      return nil unless e
+    def coerce_date(element)
+      coerce(element) { |text| Date.strptime(text, '%m/%d/%Y') }
+    end
 
-      text = e.text
-      text == "" ? nil : DateTime.parse(text)
+    def coerce_datetime(element)
+      coerce(element) { |text| DateTime.parse(text) }
     end
 
     def self.included(other)
       other::FIELDS.each do |field, type|
         define_method(field) { self.send('coerce_' + type.to_s, @element.at(field)) }
+        define_method(field.to_s + '?') { self.send('coerce_boolean', @element.at(field)) } if type == :boolean
       end
     end
   end

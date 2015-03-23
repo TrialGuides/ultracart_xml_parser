@@ -31,8 +31,16 @@ describe UltraCartXMLParser::Order do
       expect(order.lift_gate).to be false
     end
 
+    it 'returns a valid lift_gate?' do
+      expect(order.lift_gate?).to be false
+    end
+
     it 'returns a valid gift' do
       expect(order.gift).to be false
+    end
+
+    it 'returns a valid gift?' do
+      expect(order.gift?).to be false
     end
 
     it 'returns a valid email' do
@@ -99,8 +107,16 @@ describe UltraCartXMLParser::Order do
       expect(order.actual_profit_analyzed).to be false
     end
 
+    it 'returns a valid actual_profit_analyzed?' do
+      expect(order.actual_profit_analyzed?).to be false
+    end
+
     it 'returns a valid actual_profit_review' do
       expect(order.actual_profit_review).to be false
+    end
+
+    it 'returns a valid actual_profit_review?' do
+      expect(order.actual_profit_review?).to be false
     end
 
     it 'returns a valid actual_shipping' do
@@ -199,16 +215,32 @@ describe UltraCartXMLParser::Order do
       expect(order.insureship_available).to eq(false)
     end
 
+    it 'returns a valid insureship_available?' do
+      expect(order.insureship_available?).to eq(false)
+    end
+
     it 'returns a valid insureship_separate' do
       expect(order.insureship_separate).to eq(false)
+    end
+
+    it 'returns a valid insureship_separate?' do
+      expect(order.insureship_separate?).to eq(false)
     end
 
     it 'returns a valid insureship_wanted' do
       expect(order.insureship_wanted).to eq(false)
     end
 
+    it 'returns a valid insureship_wanted?' do
+      expect(order.insureship_wanted?).to eq(false)
+    end
+
     it 'returns a valid has_customer_profile' do
       expect(order.has_customer_profile).to eq(true)
+    end
+
+    it 'returns a valid has_customer_profile?' do
+      expect(order.has_customer_profile?).to eq(true)
     end
 
     it 'returns a valid customer_ip_address' do
@@ -306,11 +338,19 @@ describe UltraCartXMLParser::Order do
     it 'returns a valid mailing_list' do
       expect(order.mailing_list).to eq(true)
     end
+
+    it 'returns a valid mailing_list?' do
+      expect(order.mailing_list?).to eq(true)
+    end
   end
 
   shared_examples 'customer did not subscribe to mailing list' do
     it 'returns a valid mailing_list' do
       expect(order.mailing_list).to eq(false)
+    end
+
+    it 'returns a valid mailing_list?' do
+      expect(order.mailing_list?).to eq(false)
     end
   end
 
