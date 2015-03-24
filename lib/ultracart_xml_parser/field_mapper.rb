@@ -3,7 +3,7 @@ require 'date'
 module UltraCartXMLParser
   module FieldMapper
     def coerce(element)
-      return nil if element.nil? || (text = element.text) == ''
+      return nil if element.nil? || (text = element.text).blank?
 
       yield(text)
     end

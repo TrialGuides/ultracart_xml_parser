@@ -29,6 +29,10 @@ describe UltraCartXMLParser::Address do
     it 'includes a country' do
       expect(address.country).to eq('United States')
     end
+
+    it 'includes a country code' do
+      expect(address.country_code).to eq('US')
+    end
   end
 
   shared_examples 'it has a title' do
