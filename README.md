@@ -43,13 +43,16 @@ Or install it yourself as:
 
 ```ruby
 # Parse the XML string
-order = UltraCartXML::Order.parse(xml_contents)
+order = UltraCartXMLParser.parse(xml_contents)
 
 # Get the Order ID
 order.order_id
 
 # Get the shipping address
-order.shipping_address
+order.ship_to_address
+
+# Get the billing address
+order.bill_to_address
 
 # etc.
 ```
