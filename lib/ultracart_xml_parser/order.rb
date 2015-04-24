@@ -5,6 +5,8 @@ module UltraCartXMLParser
     FIELDS = {
       merchant_id: :string,
       order_id: :string,
+      channel_partner_code: :string,
+      channel_partner_order_id: :string,
       order_date: :datetime,
       order_type: :string,
       current_stage: :string,
