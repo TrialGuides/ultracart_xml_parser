@@ -5,7 +5,7 @@ require 'ultracart_xml_parser/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ultracart_xml_parser"
-  spec.version       = UltracartXmlParser::VERSION
+  spec.version       = UltraCartXMLParser::VERSION
   spec.authors       = ["Michael Lippold", "Peggy Condon"]
   spec.email         = ["michael@trialguides.com", "peggy@trialguides.com"]
   spec.summary       = %q{Ruby interface for interacting the UltraCart XML Postback data.}
