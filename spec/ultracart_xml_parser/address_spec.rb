@@ -73,13 +73,13 @@ describe UltraCartXMLParser::Address do
 
   context 'when the address is a shipping address' do
     describe 'it has all of the required fields' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).ship_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).first.ship_to_address }
 
       include_examples 'it has all of the required address fields'
     end
 
     describe 'it can have the optional fields present' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).bill_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).first.bill_to_address }
 
       include_examples 'it has a title'
       include_examples 'it has a company'
@@ -87,7 +87,7 @@ describe UltraCartXMLParser::Address do
     end
 
     describe 'it can have the optional fields missing' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address_no_optional')).bill_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address_no_optional')).first.bill_to_address }
 
       include_examples 'it has a blank title'
       include_examples 'it has a blank company'
@@ -97,13 +97,13 @@ describe UltraCartXMLParser::Address do
 
   context 'when the address is a billing address' do
     describe 'it has all of the required fields' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).bill_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).first.bill_to_address }
 
       include_examples 'it has all of the required address fields'
     end
 
     describe 'it can have the optional fields present' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).bill_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address')).first.bill_to_address }
 
       include_examples 'it has a title'
       include_examples 'it has a company'
@@ -111,7 +111,7 @@ describe UltraCartXMLParser::Address do
     end
 
     describe 'it can have the optional fields missing' do
-      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address_no_optional')).bill_to_address }
+      subject(:address) { UltraCartXMLParser.parse(xml_fixture('address_no_optional')).first.bill_to_address }
 
       include_examples 'it has a blank title'
       include_examples 'it has a blank company'

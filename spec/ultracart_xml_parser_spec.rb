@@ -8,10 +8,11 @@ describe UltraCartXMLParser do
   end
 
   context 'when provided with valid xml' do
-    subject(:order) { UltraCartXMLParser.parse(xml_fixture('co')) }
+    subject(:orders) { UltraCartXMLParser.parse(xml_fixture('co')) }
 
-    it 'should return an Order' do
-      expect(order).to be_an_instance_of(UltraCartXMLParser::Order)
+    it 'should return an array of Orders' do
+      expect(orders).to be_an_instance_of(Array)
+      expect(orders.first).to be_an_instance_of(UltraCartXMLParser::Order)
     end
   end
 end

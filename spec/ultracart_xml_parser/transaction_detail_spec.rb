@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UltraCartXMLParser::TransactionDetail do
-  subject(:transaction_detail) { UltraCartXMLParser.parse(xml_fixture('transaction_details')).transaction_details.first }
+  subject(:transaction_detail) { UltraCartXMLParser.parse(xml_fixture('transaction_details')).first.transaction_details.first }
 
   it 'has a transaction_id' do
     expect(transaction_detail.transaction_id).to eq('12345678')

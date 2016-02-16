@@ -10,10 +10,12 @@ require "ultracart_xml_parser/extended_detail"
 require "ultracart_xml_parser/transaction_detail"
 
 module UltraCartXMLParser
-  def self.parse(xml_string)
-    document = Nokogiri::XML::Document.parse(xml_string) do |config|
+  def self.parse(io)
+    document = Nokogiri::XML(io) do |config|
       config.options = Nokogiri::XML::ParseOptions::STRICT | Nokogiri::XML::ParseOptions::NONET
-    end    
-    Order.new(document)
+    end
+    document.xpath('/export/order').map do |order|
+      Order.new(order)
+    end
   end
 end

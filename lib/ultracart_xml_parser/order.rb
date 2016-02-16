@@ -78,29 +78,30 @@ module UltraCartXMLParser
 
     include FieldMapper
 
-    def initialize(document)
-      @element = document
+    def initialize(order)
+      # puts order
+      @element = order
     end
 
     def ship_to_address
-      address_nodes = @element.xpath('//export/order/*[starts-with(name(), "ship_to")]')
+      address_nodes = @element.xpath('./*[starts-with(name(), "ship_to")]')
       Address.new(address_nodes) unless address_nodes.empty?
     end
 
     def bill_to_address
-      Address.new(@element.xpath('//export/order/*[starts-with(name(), "bill_to")]'))
+      Address.new(@element.xpath('./*[starts-with(name(), "bill_to")]'))
     end
 
     def items
-      @element.xpath('//export/order/item').map { |item| Item.new(item) }
+      @element.xpath('./item').map { |item| Item.new(item) }
     end
 
     def coupons
-      @element.xpath('//export/order/coupon').map { |coupon| Coupon.new(coupon) }
+      @element.xpath('./coupon').map { |coupon| Coupon.new(coupon) }
     end
 
     def transaction_details
-      @element.xpath('//export/order/transaction_details/transaction_detail').map { |transaction_detail| TransactionDetail.new(transaction_detail) }
+      @element.xpath('./transaction_details/transaction_detail').map { |transaction_detail| TransactionDetail.new(transaction_detail) }
     end
   end
 end
