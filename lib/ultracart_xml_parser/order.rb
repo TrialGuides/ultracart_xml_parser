@@ -79,17 +79,16 @@ module UltraCartXMLParser
     include FieldMapper
 
     def initialize(order)
-      # puts order
       @element = order
     end
 
     def ship_to_address
       address_nodes = @element.xpath('./*[starts-with(name(), "ship_to")]')
-      Address.new(address_nodes) unless address_nodes.empty?
+      Address.new(@element, 'ship_to') unless address_nodes.empty?
     end
 
     def bill_to_address
-      Address.new(@element.xpath('./*[starts-with(name(), "bill_to")]'))
+      Address.new(@element, 'bill_to')
     end
 
     def items
