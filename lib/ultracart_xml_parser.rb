@@ -11,11 +11,15 @@ require "ultracart_xml_parser/transaction_detail"
 
 module UltraCartXMLParser
   def self.parse(io)
-    document = Nokogiri::XML(io) do |config|
+    document = Nokogiri::XML::Reader(io) do |config|
       config.options = Nokogiri::XML::ParseOptions::STRICT | Nokogiri::XML::ParseOptions::NONET
     end
-    document.xpath('/export/order').map do |order|
-      Order.new(order)
+    orders = []
+    document.each do |node|
+      if node.name == 'order' && node.node_type == Nokogiri::XML::Reader::TYPE_ELEMENT
+        orders << Order.new(Nokogiri::XML(node.outer_xml).at('./order'))
+      end
     end
+    orders
   end
 end
