@@ -99,6 +99,11 @@ module UltraCartXMLParser
       @element.xpath('./coupon').map { |coupon| Coupon.new(coupon) }
     end
 
+    def customer_profile
+      customer_profile = @element.xpath('./customer_profile')
+      CustomerProfile.new(customer_profile) unless customer_profile.empty?
+    end
+
     def transaction_details
       @element.xpath('./transaction_details/transaction_detail').map { |transaction_detail| TransactionDetail.new(transaction_detail) }
     end
