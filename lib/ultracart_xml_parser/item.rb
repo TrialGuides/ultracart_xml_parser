@@ -22,7 +22,9 @@ module UltraCartXMLParser
       discount: :float, 
       distribution_center_code: :string, 
       kit: :boolean, 
-      kit_component: :boolean
+      kit_component: :boolean,
+      quantity_refunded: :float,
+      total_refunded: :float
     }
 
     include FieldMapper

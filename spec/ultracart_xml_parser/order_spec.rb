@@ -424,7 +424,78 @@ describe UltraCartXMLParser::Order do
     it 'should have an empty transaction_details' do
       expect(order.first.transaction_details).to be_empty
     end
+  end
 
+  context 'when an order has refund data' do
+    subject(:order) { UltraCartXMLParser.parse(xml_fixture('co')).last }
+
+    it 'should have a subtotal_refunded' do
+      expect(order.subtotal_refunded).to eq(1.00)
+    end
+
+    it 'should have an other_refunded' do
+      expect(order.other_refunded).to eq(2.00)
+    end
+
+    it 'should have a tax_refunded' do
+      expect(order.tax_refunded).to eq(3.00)
+    end
+
+    it 'should have a shipping_handling_refunded' do
+      expect(order.shipping_handling_refunded).to eq(4.00)
+    end
+
+    it 'should have a buysafe_refunded' do
+      expect(order.buysafe_refunded).to eq(5.00)
+    end
+
+    it 'should have a total_refunded' do
+      expect(order.total_refunded).to eq(15.00)
+    end
+
+    it 'should have a refund_by_user' do
+      expect(order.refund_by_user).to eq('User')
+    end
+
+    it 'should have a refund_dts' do
+      expect(order.refund_dts).to eq(DateTime.new(2015, 1, 1, 14, 30, 0))
+    end
+  end
+
+  context 'when an order does not have refund data' do
+    subject(:order) { UltraCartXMLParser.parse(xml_fixture('co')).first }
+
+    it 'should not have a subtotal_refunded' do
+      expect(order.subtotal_refunded).to be_nil
+    end
+
+    it 'should not have an other_refunded' do
+      expect(order.other_refunded).to be_nil
+    end
+
+    it 'should not have a tax_refunded' do
+      expect(order.tax_refunded).to be_nil
+    end
+
+    it 'should not have a shipping_handling_refunded' do
+      expect(order.shipping_handling_refunded).to be_nil
+    end
+
+    it 'should not have a buysafe_refunded' do
+      expect(order.buysafe_refunded).to be_nil
+    end
+
+    it 'should not have a total_refunded' do
+      expect(order.total_refunded).to be_nil
+    end
+
+    it 'should not have a refund_by_user' do
+      expect(order.refund_by_user).to be_nil
+    end
+
+    it 'should not have a refund_dts' do
+      expect(order.refund_dts).to be_nil
+    end
   end
 
   # IN stands for Inserting

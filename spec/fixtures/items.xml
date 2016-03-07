@@ -72,6 +72,8 @@
       <distribution_center_code>DFLT</distribution_center_code>
       <kit>N</kit>
       <kit_component>N</kit_component>
+      <quantity_refunded>0.5</quantity_refunded>
+      <total_refunded>0.50</total_refunded>
     </item>
     <item>
       <merchant_id>ABC</merchant_id>

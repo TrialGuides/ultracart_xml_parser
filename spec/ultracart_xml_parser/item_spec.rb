@@ -232,4 +232,28 @@ describe UltraCartXMLParser::Item do
       expect(item.actual_cogs).to be_nil
     end
   end
+
+  describe 'item can have a refund' do
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).first.items.first }
+
+    it 'has a quantity_refunded' do
+      expect(item.quantity_refunded).to eq(0.5)
+    end
+
+    it 'has a total_refunded' do
+      expect(item.total_refunded).to eq(0.50)
+    end
+  end
+
+  describe 'item can have a blank refund' do
+    subject(:item) { UltraCartXMLParser.parse(xml_fixture('items')).first.items[1] }
+
+    it 'has a blank quantity_refunded' do
+      expect(item.quantity_refunded).to be_nil
+    end
+
+    it 'has a blank total_refunded' do
+      expect(item.total_refunded).to be_nil
+    end
+  end
 end
