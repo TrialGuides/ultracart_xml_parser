@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UltraCartXMLParser do
   context 'when provided with invalid xml' do
     it 'should raise an exception' do
-      expect { UltraCartXMLParser.parse('') }.to raise_error
+      expect { UltraCartXMLParser.parse(StringIO.new('<foo>')) }.to raise_error Nokogiri::XML::SyntaxError
     end
   end
 
