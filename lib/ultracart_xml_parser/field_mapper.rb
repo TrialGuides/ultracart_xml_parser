@@ -34,7 +34,7 @@ module UltraCartXMLParser
 
     def self.included(other)
       other::FIELDS.each do |field, type|
-        define_method(field) { self.send('coerce_' + type.to_s, @element.at(field)) }
+        define_method(field) { self.send('coerce_' + type.to_s, @element.xpath('./' + field.to_s)) }
         alias_method field.to_s + '?', field if type == :boolean
       end
     end
