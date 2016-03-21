@@ -49,6 +49,7 @@ module UltraCartXMLParser
       actual_fulfillment: :float,
       actual_payment_processing: :float,
       actual_profit: :float,
+      subtotal_discount_refunded: :float,
       subtotal_refunded: :float,
       other_refunded: :float,
       tax_refunded: :float,
